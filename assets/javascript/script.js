@@ -1,17 +1,26 @@
-var scores = document.querySelector(".scores");
-var questionElement = document.querySelector(".question");
-var correct = document.querySelector(".correct");
-var incorrect = document.querySelector(".incorrect");
-var answerfeedback = document.querySelector(".answer-feedback");
 var timerElement = document.querySelector("#timer-count");
 var startButton = document.querySelector("#start-button");
+
+var questionElement = document.querySelector("#question");
+var answer1 = document.querySelector("#answer1");
+var answer2 = document.querySelector("#answer2");
+var answer3 = document.querySelector("#answer3");
+var answer4 = document.querySelector("#answer4");
+
+
+var correct = document.querySelector("#correct");
+var incorrect = document.querySelector("#incorrect");
+var answerfeedback = document.querySelector("#answer-feedback");
+
+var scores = document.querySelector("#scores");
+
 var chosenAnswer = "";
 var highscores = "";
-var winCounter = 0;
-var loseCounter = 0;
 var isWin = false;
 var timer;
 var timerCount;
+
+
 
 startButton.addEventListener("click", startGame);
 
@@ -38,6 +47,7 @@ function startTimer() {
           // Clears interval and stops timer
           clearInterval(timer);
           winGame();
+          getInitials();
         }
       }
       // Tests if time has run out
@@ -46,59 +56,46 @@ function startTimer() {
         // Clears interval
         clearInterval(timer);
         loseGame();
+        getInitials();
       }
-    }, 1000);
+    }, 1000); 
   }
+
+// if end game display score and prompt to enter initials
+// if initials are entered display highscores with local storage
+
+function winGame() {
+}
+
+function loseGame() {
+}
+
+function getInitials() {
+    prompt("Enter your initials");
+}
+  
+
+
+
+
 // create array of questions 
 // create array of answers
 // create array of correct answers
 // create array of incorrect answers
-
-[
-    question: "Commonly used data types DO NOT include:",
-    answer1: 
-    answer2:
-    answer3:
-    answer4:
-]
-
-[
-    question: "The condition in an if / else statement is enclosed within ____.",
-    answer1: 
-    answer2:
-    answer3:
-    answer4:
-]
-
-[
-    question: "Arrays in JavaScript can be used to store ____.",
-    answer1: 
-    answer2:
-    answer3:
-    answer4:
-]
-
-[
-    question: "String values must be enclosed within ____ when being assigned to variables.",
-    answer1: 
-    answer2:
-    answer3:
-    answer4:
-]
-
-[
-    question: "A very useful tool used during development and debugging for printing content to the debugger is:",
-    answer1: 
-    answer2:
-    answer3:
-    answer4:
-]
-
-
-// create question fucntion
-
-    // get questions from array
-    // display questions
+// Creates blanks on screen
+function renderBlanks() {
+    // Randomly picks word from words array
+    chosenWord = words[Math.floor(Math.random() * words.length)];
+    lettersInChosenWord = chosenWord.split("");
+    numBlanks = lettersInChosenWord.length;
+    blanksLetters = []
+    // Uses loop to push blanks to blankLetters array
+    for (var i = 0; i < numBlanks; i++) {
+      blanksLetters.push("_");
+    }
+    // Converts blankLetters array into a string and renders it on the screen
+    wordBlank.textContent = blanksLetters.join(" ")
+  }
 
 
 
@@ -111,13 +108,6 @@ function startTimer() {
 // if answer is incorrect display incorrect and subtract 10 seconds from timer
 
 
-
-
-
 // if all questions are answered end game
 
 
-// if end game display score and prompt to enter initials
-
-
-// if initials are entered display highscores with local storage
