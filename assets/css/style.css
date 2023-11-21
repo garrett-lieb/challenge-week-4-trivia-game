@@ -113,7 +113,7 @@ button {
     line-height: 16px;
     max-width: 255px;
     padding: 20px 52px;
-    text-align: center;
+    text-align: left;
     transition-duration: 0.15s;
     transition-property: background-color;
     transition-timing-function: linear;
@@ -140,7 +140,6 @@ button {
   .scores,
   ul,
   li {
-    list-style-type: none;
     text-align: left;
     padding: 25px
   }

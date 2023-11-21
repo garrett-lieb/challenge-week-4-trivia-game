@@ -8,6 +8,7 @@ var answer3 = document.querySelector(".answer3");
 var answer4 = document.querySelector(".answer4");
 var correct = document.querySelector(".correct");
 var incorrect = document.querySelector(".incorrect");
+var answerfeedback = document.querySelector(".answer-feedback");
 
 var chosenAnswer = "";
 var highscores = "";
