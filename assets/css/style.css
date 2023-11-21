@@ -22,15 +22,6 @@ header {
     font-size: larger;
   }
 
-  h2{
-
-  }
-
-  h3{
-
-  }
-
-
 main {
     display: flex;
     flex-wrap: wrap;
