@@ -1,33 +1,4 @@
-if (chosenQuestion === questions[0]) {
-    answer1.textContent = "boolean";
-    answer2.textContent = "number";
-    answer3.textContent = "algorithm";
-    answer4.textContent = "string";
-}
-if (chosenQuestion === questions[1]) {
-    answer1.textContent = "''";
-    answer2.textContent = "{}";
-    answer3.textContent = "[]";
-    answer4.textContent = "()";
-}
-if (chosenQuestion === questions[2]) {
-    answer1.textContent = "a list of values";
-    answer2.textContent = "a list of variables";
-    answer3.textContent = "a list of strings";
-    answer4.textContent = "a list of groceries";
-}
-if (chosenQuestion === questions[3]) {
-    answer1.textContent = "double quotes";
-    answer2.textContent = "single or double quotes";
-    answer3.textContent = "single quotes";
-    answer4.textContent = "brackets";
-}
-if (chosenQuestion === questions[4]) {
-    answer1.textContent = "algorithms";
-    answer2.textContent = "boolean values";
-    answer3.textContent = "arrays, variables, and strings";
-    answer4.textContent = "individual statements, instructions or function calls";
-}
+
 
 // if end game display score and prompt to enter initials
 // if initials are entered display highscores with local storage

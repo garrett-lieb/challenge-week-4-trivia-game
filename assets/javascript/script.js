@@ -30,18 +30,6 @@ var questions =
     "Contorl flow is the order in which ____ are executed or evaluated when a program is run." 
 ]
 
-function renderBlanks() {
-    // Randomly picks word from words array
-    chosenQuestion = questions[Math.floor(Math.random() * questions.length)];
-    // Uses loop to push blanks to blankLetters array
-    for (var i = 0; i < questions.length; i++) {
-      console.log(chosenQuestion);
-    }
-  }
-
-
-
-
 startButton.addEventListener("click", startGame);
 
 function startGame() {
@@ -49,11 +37,11 @@ function startGame() {
     isLoss = false;
     timerCount = 5;
     startTimer()
+    renderBlanks();
     // Prevents start button from being clicked when round is in progress
     startButton.disabled = true;
     
-    // load questions //load answers
-    
+    // load questions //load answers 
   }
 
   
@@ -82,6 +70,45 @@ function startTimer() {
     }, 1000); 
   }
 
+  function renderBlanks() {
+    // Randomly picks word from words array
+    chosenQuestion = questions[Math.floor(Math.random() * questions.length)];
+    // Uses loop to push blanks to blankLetters array
+    for (var i = 0; i < questions.length; i++) {
+      console.log(chosenQuestion);
+      question.textContent=chosenQuestion
+    }
+    if (chosenQuestion === questions[0]) {
+        answer1.textContent = "boolean";
+        answer2.textContent = "number";
+        answer3.textContent = "algorithm";
+        answer4.textContent = "string";
+    }
+    if (chosenQuestion === questions[1]) {
+        answer1.textContent = "''";
+        answer2.textContent = "{}";
+        answer3.textContent = "[]";
+        answer4.textContent = "()";
+    }
+    if (chosenQuestion === questions[2]) {
+        answer1.textContent = "a list of values";
+        answer2.textContent = "a list of variables";
+        answer3.textContent = "a list of strings";
+        answer4.textContent = "a list of groceries";
+    }
+    if (chosenQuestion === questions[3]) {
+        answer1.textContent = "double quotes";
+        answer2.textContent = "single or double quotes";
+        answer3.textContent = "single quotes";
+        answer4.textContent = "brackets";
+    }
+    if (chosenQuestion === questions[4]) {
+        answer1.textContent = "algorithms";
+        answer2.textContent = "boolean values";
+        answer3.textContent = "arrays, variables, and strings";
+        answer4.textContent = "individual statements, instructions or function calls";
+    }
+  }
 
 // check win
 
