@@ -13,6 +13,7 @@ var incorrect = document.querySelector("#incorrect");
 
 var scores = document.querySelector("#scores");
 
+var chosenQuestion = "";
 var chosenAnswer = "";
 var Highscores = "";
 var isWin = false;
@@ -21,9 +22,24 @@ var timerCount;
 
 
 // array of questions
+var questions =
+[   "Commonly used data types DO NOT include:",
+    "The condition in an if / else statement is enclosed within ____.",
+    "Arrays in JavaScript can be used to store ____.",
+    "String values must be enclosed within ____ when being assigned to variables.",
+    "Contorl flow is the order in which ____ are executed or evaluated when a program is run." 
+]
+
+function renderBlanks() {
+    // Randomly picks word from words array
+    chosenQuestion = questions[Math.floor(Math.random() * questions.length)];
+    // Uses loop to push blanks to blankLetters array
+    for (var i = 0; i < questions.length; i++) {
+      console.log(chosenQuestion);
+    }
+  }
 
 
-// array of answers
 
 
 startButton.addEventListener("click", startGame);
@@ -32,11 +48,12 @@ function startGame() {
     isWin = false;
     isLoss = false;
     timerCount = 5;
+    startTimer()
     // Prevents start button from being clicked when round is in progress
     startButton.disabled = true;
-    // load questions
-    // load answers
-    startTimer()
+    
+    // load questions //load answers
+    
   }
 
   
