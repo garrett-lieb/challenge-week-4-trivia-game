@@ -15,42 +15,42 @@
 function checkAnswer() {
     // if answer is correct display next quesion in array
       if (chosenQuestion === questions[0] && chosenAnswer === answer3) {
+    // if answer is correct display correct and load next question
           console.log("correct");
           currentscore = currentscore + 10;
-    // if answer is correct display correct
           if (chosenQuestion === questions[0] && chosenAnswer === answer1 || answer2 || answer4) {
-    // if answer is incorrect display incorrect and subtract 10 seconds from timer
+    // if answer is correct display correct and load next question
               console.log("incorrect");
               timerCount = timerCount - 10;
       }}
+
       if (chosenQuestion === questions[1] && chosenAnswer === answer2) {
           console.log("correct");
           currentscore = currentscore + 10;
-    // if answer is correct display correct
           if (chosenQuestion === questions[1] && chosenAnswer === answer1 || answer3 || answer4) {
               console.log("incorrect");
               timerCount = timerCount - 10;
       }}
+
       if (chosenQuestion === questions[2] && chosenAnswer === answer4) {
           console.log("correct");
           currentscore = currentscore + 10;
-    // if answer is correct display correct
           if (chosenQuestion === questions[2] && chosenAnswer === answer1 || answer2 || answer3) {
               console.log("incorrect");
               timerCount = timerCount - 10;
       }}
+
       if (chosenQuestion === questions[3] && chosenAnswer === answer2) {
           console.log("correct");
           currentscore = currentscore + 10;
-    // if answer is correct display correct
           if (chosenQuestion === questions[3] && chosenAnswer === answer1 || answer3 || answer4) {
               console.log("incorrect");
               timerCount = timerCount - 10;
       }}
+
       if (chosenQuestion === questions[4] && chosenAnswer === answer4) {
           console.log("correct");
           currentscore = currentscore + 10;
-    // if answer is correct display correct
           if (chosenQuestion === questions[4] && chosenAnswer === answer1 || answer2 || answer3) {
               console.log("incorrect");
               timerCount = timerCount - 10;
@@ -64,10 +64,8 @@ function checkAnswer() {
 // function loseGame() {}
 
 function getInitials() {
-    var initials {
-        prompt("Enter your initials");
+    prompt("Enter your initials");
         }
-    }
 
 function saveHighscore() {
     var Highscores = {

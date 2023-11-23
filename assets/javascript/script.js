@@ -6,7 +6,7 @@ var answer1 = document.querySelector("#answer1");
 var answer2 = document.querySelector("#answer2");
 var answer3 = document.querySelector("#answer3");
 var answer4 = document.querySelector("#answer4");
-var rootEl = $("#answer-feedback");
+var answerfeedback = document.querySelector("#answer-feedback");
 var currentscore = document.querySelector("#currentscore");
 
 var correct = document.querySelector("#correct");
@@ -14,10 +14,12 @@ var incorrect = document.querySelector("#incorrect");
 
 var scores = document.querySelector("#scores");
 
+var currentscore = 0;
 var chosenQuestion = "";
 var chosenAnswer = "";
 var Highscores = "";
 var isWin = false;
+var isLoss = false;
 var timer;
 var timerCount;
 var initials = "";
@@ -45,14 +47,10 @@ function startGame() {
      // load questions //load answers 
     renderBlanks();
     // Prevents start button from being clicked when round is in progress
-    startButton.disabled = true; 
-    answer1.disabled = false;
-    answer2.disabled = false;
-    answer3.disabled = false;
-    answer4.disabled = false;
+    startButton.disabled = true;
   }
 
-  
+
 // create timer function
 function startTimer() {
     // Sets timer
@@ -73,9 +71,11 @@ function startTimer() {
       if (timerCount === 0) {
         timerElement.textContent = "You ran out of time :(";
         // Clears interval
+        getInitials();
         clearInterval(timer);
-        prompt("Enter your initials");
-        console.log();
+        console.log(initials + currentscore);
+        
+        
       }
     }, 1000); 
   }
@@ -121,51 +121,67 @@ function startTimer() {
   }
 
 
-function checkAnswer() {
-// if answer is correct display next quesion in array
-  if (chosenQuestion === questions[0] && chosenAnswer === answer3) {
-      console.log("correct");
-// if answer is correct display correct
-      if (chosenQuestion === questions[0] && chosenAnswer === answer1 || answer2 || answer4) {
-// if answer is incorrect display incorrect and subtract 10 seconds from timer
-          console.log("incorrect");
-          timerCount = timerCount - 10;
-  }}
-  if (chosenQuestion === questions[1] && chosenAnswer === answer2) {
-      console.log("correct");
-// if answer is correct display correct
-      if (chosenQuestion === questions[1] && chosenAnswer === answer1 || answer3 || answer4) {
-          console.log("incorrect");
-          timerCount = timerCount - 10;
-  }}
-  if (chosenQuestion === questions[2] && chosenAnswer === answer4) {
-      console.log("correct");
-// if answer is correct display correct
-      if (chosenQuestion === questions[2] && chosenAnswer === answer1 || answer2 || answer3) {
-          console.log("incorrect");
-          timerCount = timerCount - 10;
-  }}
-  if (chosenQuestion === questions[3] && chosenAnswer === answer2) {
-      console.log("correct");
-// if answer is correct display correct
-      if (chosenQuestion === questions[3] && chosenAnswer === answer1 || answer3 || answer4) {
-          console.log("incorrect");
-          timerCount = timerCount - 10;
-  }}
-  if (chosenQuestion === questions[4] && chosenAnswer === answer4) {
-      console.log("correct");
-// if answer is correct display correct
-      if (chosenQuestion === questions[4] && chosenAnswer === answer1 || answer2 || answer3) {
-          console.log("incorrect");
-          timerCount = timerCount - 10;
-  }}
-}
+  function checkAnswer() {
+    // if answer is correct display next quesion in array
+      if (chosenQuestion === questions[0] && chosenAnswer === answer3) {
+    // if answer is correct display correct and load next question
+          console.log("correct");
+          answerfeedback.textContent = "correct";
+          currentscore = currentscore + 10;
+          if (chosenQuestion === questions[0] && chosenAnswer === answer1 || answer2 || answer4) {
+    // if answer is correct display correct and load next question
+              console.log("incorrect");
+              timerCount = timerCount - 10;
+      }}
+
+      if (chosenQuestion === questions[1] && chosenAnswer === answer2) {
+          console.log("correct");
+          answerfeedback.textContent = "correct";
+          currentscore = currentscore + 10;
+          if (chosenQuestion === questions[1] && chosenAnswer === answer1 || answer3 || answer4) {
+              console.log("incorrect");
+              timerCount = timerCount - 10;
+      }}
+
+      if (chosenQuestion === questions[2] && chosenAnswer === answer4) {
+          console.log("correct");
+          answerfeedback.textContent = "correct";
+          currentscore = currentscore + 10;
+          if (chosenQuestion === questions[2] && chosenAnswer === answer1 || answer2 || answer3) {
+              console.log("incorrect");
+              timerCount = timerCount - 10;
+      }}
+
+      if (chosenQuestion === questions[3] && chosenAnswer === answer2) {
+          console.log("correct");
+          answerfeedback.textContent = "correct";
+          currentscore = currentscore + 10;
+          if (chosenQuestion === questions[3] && chosenAnswer === answer1 || answer3 || answer4) {
+              console.log("incorrect");
+              timerCount = timerCount - 10;
+      }}
+      
+      if (chosenQuestion === questions[4] && chosenAnswer === answer4) {
+          console.log("correct");
+          answerfeedback.textContent = "correct";
+          currentscore = currentscore + 10;
+          if (chosenQuestion === questions[4] && chosenAnswer === answer1 || answer2 || answer3) {
+              console.log("incorrect");
+              timerCount = timerCount - 10;
+      }}
+    }
+
+  
 
 // if timer runs out display game over
 
 // if all questions are answered display game over
 
 // if game ends prompt to enter initials and save score to local storage
+
+function getInitials() {
+  prompt("Enter your initials");
+      }
 
 // if initials are entered display highscores with local storage
 
