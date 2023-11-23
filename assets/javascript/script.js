@@ -7,6 +7,7 @@ var answer2 = document.querySelector("#answer2");
 var answer3 = document.querySelector("#answer3");
 var answer4 = document.querySelector("#answer4");
 var rootEl = $("#answer-feedback");
+var currentscore = document.querySelector("#currentscore");
 
 var correct = document.querySelector("#correct");
 var incorrect = document.querySelector("#incorrect");
@@ -19,28 +20,36 @@ var Highscores = "";
 var isWin = false;
 var timer;
 var timerCount;
-
+var initials = "";
 
 // array of questions
 var questions =
 [   "Commonly used data types DO NOT include:",
     "The condition in an if / else statement is enclosed within ____.",
-    "Arrays in JavaScript can be used to store ____.",
+    "Arrays in JavaScript can be used to store all except:",
     "String values must be enclosed within ____ when being assigned to variables.",
     "Contorl flow is the order in which ____ are executed or evaluated when a program is run." 
 ]
 
 startButton.addEventListener("click", startGame);
+answer1.addEventListener("click", checkAnswer);
+answer2.addEventListener("click", checkAnswer);
+answer3.addEventListener("click", checkAnswer);
+answer4.addEventListener("click", checkAnswer);
 
 function startGame() {
     isWin = false;
     isLoss = false;
-    timerCount = 60;
+    timerCount = 5;
     startTimer()
      // load questions //load answers 
     renderBlanks();
     // Prevents start button from being clicked when round is in progress
     startButton.disabled = true; 
+    answer1.disabled = false;
+    answer2.disabled = false;
+    answer3.disabled = false;
+    answer4.disabled = false;
   }
 
   
@@ -65,6 +74,8 @@ function startTimer() {
         timerElement.textContent = "You ran out of time :(";
         // Clears interval
         clearInterval(timer);
+        prompt("Enter your initials");
+        console.log();
       }
     }, 1000); 
   }
@@ -110,21 +121,61 @@ function startTimer() {
   }
 
 
-// check win
-
-
-// check loss
-
-
-// if answer if correct display correct
-
-
+function checkAnswer() {
 // if answer is correct display next quesion in array
-
-
+  if (chosenQuestion === questions[0] && chosenAnswer === answer3) {
+      console.log("correct");
+// if answer is correct display correct
+      if (chosenQuestion === questions[0] && chosenAnswer === answer1 || answer2 || answer4) {
 // if answer is incorrect display incorrect and subtract 10 seconds from timer
+          console.log("incorrect");
+          timerCount = timerCount - 10;
+  }}
+  if (chosenQuestion === questions[1] && chosenAnswer === answer2) {
+      console.log("correct");
+// if answer is correct display correct
+      if (chosenQuestion === questions[1] && chosenAnswer === answer1 || answer3 || answer4) {
+          console.log("incorrect");
+          timerCount = timerCount - 10;
+  }}
+  if (chosenQuestion === questions[2] && chosenAnswer === answer4) {
+      console.log("correct");
+// if answer is correct display correct
+      if (chosenQuestion === questions[2] && chosenAnswer === answer1 || answer2 || answer3) {
+          console.log("incorrect");
+          timerCount = timerCount - 10;
+  }}
+  if (chosenQuestion === questions[3] && chosenAnswer === answer2) {
+      console.log("correct");
+// if answer is correct display correct
+      if (chosenQuestion === questions[3] && chosenAnswer === answer1 || answer3 || answer4) {
+          console.log("incorrect");
+          timerCount = timerCount - 10;
+  }}
+  if (chosenQuestion === questions[4] && chosenAnswer === answer4) {
+      console.log("correct");
+// if answer is correct display correct
+      if (chosenQuestion === questions[4] && chosenAnswer === answer1 || answer2 || answer3) {
+          console.log("incorrect");
+          timerCount = timerCount - 10;
+  }}
+}
+
+// if timer runs out display game over
+
+// if all questions are answered display game over
+
+// if game ends prompt to enter initials and save score to local storage
+
+// if initials are entered display highscores with local storage
 
 
-// if all questions are answered end game
+
+
+
+
+
+
+
 
 
