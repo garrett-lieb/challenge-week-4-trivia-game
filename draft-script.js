@@ -57,19 +57,17 @@ function checkAnswer() {
       }}
     }
 
-function winGame() {
-}
 
-function loseGame() {
+// function winGame() {}
 
-}
+
+// function loseGame() {}
 
 function getInitials() {
     var initials {
         prompt("Enter your initials");
-        
+        }
     }
-}
 
 function saveHighscore() {
     var Highscores = {
@@ -80,24 +78,3 @@ function saveHighscore() {
       // Use .setItem() to store object in storage and JSON.stringify to convert it as a string
       localStorage.setItem('studentGrade', JSON.stringify(studentGrade));
     }
-}
-
-// create array of questions 
-// create array of answers
-// create array of correct answers
-// create array of incorrect answers
-// Creates blanks on screen
-
-function renderBlanks() {
-    // Randomly picks word from words array
-    chosenWord = words[Math.floor(Math.random() * words.length)];
-    lettersInChosenWord = chosenWord.split("");
-    numBlanks = lettersInChosenWord.length;
-    blanksLetters = []
-    // Uses loop to push blanks to blankLetters array
-    for (var i = 0; i < numBlanks; i++) {
-      blanksLetters.push("_");
-    }
-    // Converts blankLetters array into a string and renders it on the screen
-    wordBlank.textContent = blanksLetters.join(" ")
-  }
