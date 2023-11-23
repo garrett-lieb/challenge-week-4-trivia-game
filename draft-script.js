@@ -10,6 +10,14 @@
 // if game ends prompt to enter initials and save score to local storage
 // if initials are entered display highscores with local storage
 
+
+
+function checkAnswer {
+    if (chosenQuestion === questions[0] && chosenAnswer === answer1) {
+        console.log("correct");
+    }
+}
+
 function winGame() {
 }
 

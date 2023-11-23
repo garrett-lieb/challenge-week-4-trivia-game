@@ -35,7 +35,7 @@ startButton.addEventListener("click", startGame);
 function startGame() {
     isWin = false;
     isLoss = false;
-    timerCount = 5;
+    timerCount = 60;
     startTimer()
      // load questions //load answers 
     renderBlanks();
@@ -109,11 +109,6 @@ function startTimer() {
     }
   }
 
-  function checkAnswer {
-        if (chosenQuestion === questions[0] && chosenAnswer === answer1) {
-            console.log("correct");
-        }
-  }
 
 // check win
 
