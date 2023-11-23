@@ -47,9 +47,11 @@ function startGame() {
      // load questions //load answers 
     renderBlanks();
     // Prevents start button from being clicked when round is in progress
-    startButton.disabled = true;
+    startButton.disabled = true; 
+    
   }
 
+  
 
 // create timer function
 function startTimer() {
@@ -178,11 +180,10 @@ function startTimer() {
 // if all questions are answered display game over
 
 // if game ends prompt to enter initials and save score to local storage
-
 function getInitials() {
   prompt("Enter your initials");
       }
-
+      
 // if initials are entered display highscores with local storage
 
 
