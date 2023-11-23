@@ -37,11 +37,10 @@ function startGame() {
     isLoss = false;
     timerCount = 5;
     startTimer()
+     // load questions //load answers 
     renderBlanks();
     // Prevents start button from being clicked when round is in progress
-    startButton.disabled = true;
-    
-    // load questions //load answers 
+    startButton.disabled = true; 
   }
 
   
@@ -108,6 +107,12 @@ function startTimer() {
         answer3.textContent = "arrays, variables, and strings";
         answer4.textContent = "individual statements, instructions or function calls";
     }
+  }
+
+  function checkAnswer {
+        if (chosenQuestion === questions[0] && chosenAnswer === answer1) {
+            console.log("correct");
+        }
   }
 
 // check win
