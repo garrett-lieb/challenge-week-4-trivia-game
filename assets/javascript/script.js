@@ -1,6 +1,6 @@
 var timerElement = document.querySelector("#timer-count");
 const startButton = document.querySelector("#start-button");
-
+const submitButton = document.querySelector("#submit-button");
 var questionElement = document.querySelector("#question");
 var answerfeedback = document.querySelector("#answer-feedback");
 var currentscoreEl = document.querySelector("#current-score");
@@ -10,15 +10,17 @@ var incorrect = document.querySelector("#incorrect");
 var answerContainer = document.querySelector(".answers");
 var cardhidden = document.querySelector(".card-hidden");
 var Highscores = document.querySelector("#highscores");
+var cardhidden = document.querySelector("#card-hidden");
 
-cardhidden.classList.add("hide");
+$(cardhidden).css("display", "none");
+
 var questionIndex = 0;
 var currentscore = 0;
 // var timer;
 // var timerCount = 60;
 var chosenQuestion = ""; 
 // var Highscores = "";
-var initials = "";
+var initials = ("#initials");
 
 
 
@@ -134,13 +136,27 @@ function startTimer() {
 
 // if game ends prompt to enter initials and save score to local storage
 function getInitials() {
-  cardhidden.classList.remove("hide");
+  $(cardhidden).css("display", "flex");
+  submitButton.addEventListener("click", function(event) {
+    event.preventDefault();
+    var initials = document.querySelector("#initials");
+    localStorage.setItem("initials", initials);
+    localStorage.setItem("currentscore", currentscore);
+    renderLastRegistered();
+    console.log(initials, currentscore);
+  })
 }
+
+
+
+
  // set new submission to local storage 
- localStorage.setItem("highscore", JSON.stringify(highscore));
+//  localStorage.setItem("highscore", JSON.stringify(highscore));
 
 // submitButton.addEventListener("click", function(event) {
 //   event.preventDefault();
+// submitButton.addEventListener("click", function(event)) {
+  // event.preventDefault();
 
 // function renderLastRegistered() {
 //   localStorage.getItem("#initials");
@@ -148,6 +164,9 @@ function getInitials() {
 //   userEmailSpan.textContent = email;
 //   userPasswordSpan.textContent = password;
 // }
+
+
+
 // if initials are entered display highscores with local storage
 
 // function saveHighscore() {
