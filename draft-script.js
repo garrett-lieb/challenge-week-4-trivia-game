@@ -75,4 +75,4 @@ function saveHighscore() {
       // Use .setItem() to store object in storage and JSON.stringify to convert it as a string
       localStorage.setItem('Highscores', JSON.stringify(Highschores));
     }
-    Highschores.textContent = initials + currentscore;
+   var Highschores.textContent = initials + currentscore;
