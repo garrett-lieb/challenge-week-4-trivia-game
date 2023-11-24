@@ -1,28 +1,23 @@
-var timerElement = document.querySelector("#timer-count");
 const startButton = document.querySelector("#start-button");
 const submitButton = document.querySelector("#submit-button");
+var timerElement = document.querySelector("#timer-count");
 var questionElement = document.querySelector("#question");
+var answerContainer = document.querySelector(".answers");
 var answerfeedback = document.querySelector("#answer-feedback");
 var currentscoreEl = document.querySelector("#current-score");
 var buttonchoices = ["#answer1", "#answer2", "#answer3", "#answer4"];
 var correct = document.querySelector("#correct");
 var incorrect = document.querySelector("#incorrect");
-var answerContainer = document.querySelector(".answers");
-var cardhidden = document.querySelector(".card-hidden");
+
 var Highscores = document.querySelector("#highscores");
 var cardhidden = document.querySelector("#card-hidden");
-
-$(cardhidden).css("display", "none");
-
 var questionIndex = 0;
 var currentscore = 0;
-// var timer;
-// var timerCount = 60;
 var chosenQuestion = ""; 
 // var Highscores = "";
-var initials = ("#initials");
+var initials = "";
 
-
+$(cardhidden).css("display", "none");
 
 // array of questions & answers
 var questions =
@@ -134,17 +129,26 @@ function startTimer() {
   } 
 }
 
+
 // if game ends prompt to enter initials and save score to local storage
 function getInitials() {
   $(cardhidden).css("display", "flex");
-  submitButton.addEventListener("click", function(event) {
+
+    submitButton.addEventListener("click", function(event) {
+    
     event.preventDefault();
-    var initials = document.querySelector("#initials");
-    localStorage.setItem("initials", initials);
+    $(cardhidden).css("display", "hide");
+    //document.querySelector("#initials").value;
+    var highscore = (initals.value + " " + currentscore)
+
+    localStorage.setItem("highscore", highscore);
+
     localStorage.setItem("currentscore", currentscore);
-    renderLastRegistered();
-    console.log(initials, currentscore);
+    //renderLastRegistered();
+    
+    console.log(highscore);
   })
+  //highscore.textContent = highscore;
 }
 
 
