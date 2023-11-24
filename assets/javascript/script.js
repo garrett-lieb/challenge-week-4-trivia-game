@@ -137,41 +137,29 @@ function getInitials() {
     submitButton.addEventListener("click", function(event) {
     
     event.preventDefault();
-    $(cardhidden).css("display", "hide");
-    //document.querySelector("#initials").value;
+  
     var highscore = (initals.value + " " + currentscore)
 
     localStorage.setItem("highscore", highscore);
 
     localStorage.setItem("currentscore", currentscore);
-    //renderLastRegistered();
+    
     
     console.log(highscore);
   })
-  //highscore.textContent = highscore;
+  
 }
 
-
-
-
- // set new submission to local storage 
-//  localStorage.setItem("highscore", JSON.stringify(highscore));
-
-// submitButton.addEventListener("click", function(event) {
-//   event.preventDefault();
-// submitButton.addEventListener("click", function(event)) {
-  // event.preventDefault();
-
-// function renderLastRegistered() {
-//   localStorage.getItem("#initials");
-//   var highscores = localStorage.getItem("#current-score");
-//   userEmailSpan.textContent = email;
-//   userPasswordSpan.textContent = password;
-// }
+localStorage.setItem("highscore", JSON.stringify(highscore));
+ 
+// set new submission to local storage 
+ 
+//renderLastRegistered();
 
 
 
 // if initials are entered display highscores with local storage
+
 
 // function saveHighscore() {
 //   var initials = document.querySelector("#initials").value;
