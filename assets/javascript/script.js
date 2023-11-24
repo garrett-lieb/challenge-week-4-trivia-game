@@ -107,9 +107,9 @@ function startTimer() {
       for (var j = 0; j < options.length; j++) {
         options[j].textContent = choices[i];
       }
-      // var question.textContent=chosenQuestion
     }
   }
+
   answerContainer.addEventListener("click", function(event){
     var chosenAnswer = event.target
     if (chosenAnswer.matches("button")) {
@@ -117,7 +117,6 @@ function startTimer() {
       checkAnswer(chosenAnswer.textContent);
     }
   })
-
 
   function checkAnswer(chosenAnswer) {
   console.log(chosenQuestion, chosenAnswer, "clicked")
@@ -137,60 +136,8 @@ function startTimer() {
   } else {
     getInitials();
     clearInterval(timer);
-  }
-
-
-    //   if (chosenQuestion === questions[questionIndex] && chosenAnswer === answer3) {
-    // // if answer is correct display correct and load next question
-    //       console.log("correct");
-    //       answerfeedback.textContent = "correct";
-    //       currentscore = currentscore + 10;
-    //       if (chosenQuestion === questions[0] && chosenAnswer === answer1 || answer2 || answer4) {
-    // // if answer is correct display correct and load next question
-    //           console.log("incorrect");
-    //           timerCount = timerCount - 10;
-    //   }}
-
-    //   if (chosenQuestion === questions[questionIndex] && chosenAnswer === answer2) {
-    //       console.log("correct");
-    //       answerfeedback.textContent = "correct";
-    //       currentscore = currentscore + 10;
-    //       if (chosenQuestion === questions[1] && chosenAnswer === answer1 || answer3 || answer4) {
-    //           console.log("incorrect");
-    //           answerfeedback.textContent = "incorrect";
-    //           timerCount = timerCount - 10;
-    //   }}
-
-    //   if (chosenQuestion === questions[questionIndex] && chosenAnswer === answer4) {
-    //       console.log("correct");
-    //       answerfeedback.textContent = "correct";
-    //       currentscore = currentscore + 10;
-    //       if (chosenQuestion === questions[2] && chosenAnswer === answer1 || answer2 || answer3) {
-    //           console.log("incorrect");
-    //           answerfeedback.textContent = "incorrect";
-    //           timerCount = timerCount - 10;
-    //   }}
-
-    //   if (chosenQuestion === questions[questionIndex] && chosenAnswer === answer2) {
-    //       console.log("correct");
-    //       answerfeedback.textContent = "correct";
-    //       currentscore = currentscore + 10;
-    //       if (chosenQuestion === questions[3] && chosenAnswer === answer1 || answer3 || answer4) {
-    //           console.log("incorrect");
-    //           answerfeedback.textContent = "incorrect";
-    //           timerCount = timerCount - 10;
-    //   }}
-      
-    //   if (chosenQuestion === questions[questionIndex] && chosenAnswer === answer4) {
-    //       console.log("correct");
-    //       answerfeedback.textContent = "correct";
-    //       currentscore = currentscore + 10;
-    //       if (chosenQuestion === questions[4] && chosenAnswer === answer1 || answer2 || answer3) {
-    //           console.log("incorrect");
-    //           answerfeedback.textContent = "incorrect";
-    //           timerCount = timerCount - 10;
-    //   }}
-     }
+  } 
+}
 
   
 
@@ -201,6 +148,7 @@ function startTimer() {
 // if game ends prompt to enter initials and save score to local storage
 function getInitials() {
   prompt("Enter your initials");
+
       }
     
 // if initials are entered display highscores with local storage
