@@ -12,17 +12,18 @@ var currentscore = document.querySelector("#currentscore");
 var correct = document.querySelector("#correct");
 var incorrect = document.querySelector("#incorrect");
 
-var scores = document.querySelector("#scores");
+var Highscores = document.querySelector("#Highscores");
 
 var currentscore = 0;
 var chosenQuestion = "";
 var chosenAnswer = "";
 var Highscores = "";
+var initials = "";
 var isWin = false;
 var isLoss = false;
 var timer;
 var timerCount;
-var initials = "";
+
 
 // array of questions
 var questions =
@@ -124,7 +125,6 @@ function startTimer() {
 
 
   function checkAnswer() {
-    // if answer is correct display next quesion in array
       if (chosenQuestion === questions[0] && chosenAnswer === answer3) {
     // if answer is correct display correct and load next question
           console.log("correct");
@@ -142,6 +142,7 @@ function startTimer() {
           currentscore = currentscore + 10;
           if (chosenQuestion === questions[1] && chosenAnswer === answer1 || answer3 || answer4) {
               console.log("incorrect");
+              answerfeedback.textContent = "incorrect";
               timerCount = timerCount - 10;
       }}
 
@@ -151,6 +152,7 @@ function startTimer() {
           currentscore = currentscore + 10;
           if (chosenQuestion === questions[2] && chosenAnswer === answer1 || answer2 || answer3) {
               console.log("incorrect");
+              answerfeedback.textContent = "incorrect";
               timerCount = timerCount - 10;
       }}
 
@@ -160,6 +162,7 @@ function startTimer() {
           currentscore = currentscore + 10;
           if (chosenQuestion === questions[3] && chosenAnswer === answer1 || answer3 || answer4) {
               console.log("incorrect");
+              answerfeedback.textContent = "incorrect";
               timerCount = timerCount - 10;
       }}
       
@@ -169,6 +172,7 @@ function startTimer() {
           currentscore = currentscore + 10;
           if (chosenQuestion === questions[4] && chosenAnswer === answer1 || answer2 || answer3) {
               console.log("incorrect");
+              answerfeedback.textContent = "incorrect";
               timerCount = timerCount - 10;
       }}
     }
@@ -183,7 +187,7 @@ function startTimer() {
 function getInitials() {
   prompt("Enter your initials");
       }
-      
+    
 // if initials are entered display highscores with local storage
 
 

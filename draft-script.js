@@ -69,10 +69,10 @@ function getInitials() {
 
 function saveHighscore() {
     var Highscores = {
-        student: student.value,
-        grade: grade.value,
-        comment: comment.value.trim(),
+        initials: initials,
+        currentscore: currentscore,
       };
       // Use .setItem() to store object in storage and JSON.stringify to convert it as a string
-      localStorage.setItem('studentGrade', JSON.stringify(studentGrade));
+      localStorage.setItem('Highscores', JSON.stringify(Highschores));
     }
+    Highschores.textContent = initials + currentscore;
