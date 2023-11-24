@@ -4,27 +4,25 @@ const startButton = document.querySelector("#start-button");
 var questionElement = document.querySelector("#question");
 var answerfeedback = document.querySelector("#answer-feedback");
 var currentscoreEl = document.querySelector("#current-score");
-
 var buttonchoices = ["#answer1", "#answer2", "#answer3", "#answer4"];
 var correct = document.querySelector("#correct");
 var incorrect = document.querySelector("#incorrect");
 var answerContainer = document.querySelector(".answers");
-var Highscores = document.querySelector("#Highscores");
+var cardhidden = document.querySelector(".card-hidden");
+var Highscores = document.querySelector("#highscores");
 
-var currentscore = 0;
-var timer;
-var timerCount = 60;
-var chosenQuestion = "";
- 
-var Highscores = "";
-var initials = "";
-var isWin = false;
-var isLoss = false;
-
+cardhidden.classList.add("hide");
 var questionIndex = 0;
+var currentscore = 0;
+// var timer;
+// var timerCount = 60;
+var chosenQuestion = ""; 
+// var Highscores = "";
+var initials = "";
 
 
-// array of questions
+
+// array of questions & answers
 var questions =
 [   {question: "Commonly used data types DO NOT include:",
     choices: ["strings", "booleans", "algorithm", "numbers"],
@@ -33,14 +31,14 @@ var questions =
 
     {question: "The condition in an if / else statement is enclosed within ____.",
     choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
-    answer: "parentheses"},
+    answer: "curly brackets"},
 
     {question: "Arrays in JavaScript can be used to store all except:",
-     choices: ["values", "variables", "Strirngs", "groceries"],
+     choices: ["values", "variables", "strings", "groceries"],
      answer: "groceries"},
 
     {question: "String values must be enclosed within ____ when being assigned to variables.",
-     choices: ["single quotes", "single or dobule quotes", "double quotes", "brackets"],
+     choices: ["single quotes", "single or double quotes", "double quotes", "brackets"],
      answer: "single or double quotes"},
 
     {question: "Contorl flow is the order in which ____ are executed or evaluated when a program is run.",
@@ -85,22 +83,17 @@ function startTimer() {
       if (timerCount === 0) {
         timerElement.textContent = "You ran out of time :(";
         // Clears interval
-        getInitials();
         clearInterval(timer);
-        console.log(initials + currentscore);
-        
-        
+        getInitials();
+        startButton.disabled = false;
       }
     }, 1000); 
   }
 
   function renderBlanks() {
-    // Randomly picks word from words array
-    // chosenQuestion = questions[Math.floor(Math.random() * questions.length)];
     chosenQuestion = questions[questionIndex].question;
     questionElement.textContent = chosenQuestion;
     var choices = questions[questionIndex].choices;
-    // Uses loop to push blanks to blankLetters array
     for (var i = 0; i < choices.length; i++) {
       console.log(chosenQuestion, "rendering question");
       var options = document.querySelectorAll(`${buttonchoices[i]}`);
@@ -125,7 +118,6 @@ function startTimer() {
     answerfeedback.textContent = "correct";
     currentscore += 10;
     currentscoreEl.textContent = currentscore;
-
   } else {
     answerfeedback.textContent = "incorrect";
     timerCount -= 10;
@@ -134,26 +126,36 @@ function startTimer() {
   if (questionIndex < questions.length) {
     renderBlanks();
   } else {
-    getInitials();
     clearInterval(timer);
+    timerElement.textContent = "You Finished!";
+    getInitials();
   } 
 }
 
-  
-
-// if timer runs out display game over
-
-// if all questions are answered display game over
-
 // if game ends prompt to enter initials and save score to local storage
 function getInitials() {
-  prompt("Enter your initials");
+  cardhidden.classList.remove("hide");
+}
+ // set new submission to local storage 
+ localStorage.setItem("highscore", JSON.stringify(highscore));
 
-      }
-    
+// submitButton.addEventListener("click", function(event) {
+//   event.preventDefault();
+
+// function renderLastRegistered() {
+//   localStorage.getItem("#initials");
+//   var highscores = localStorage.getItem("#current-score");
+//   userEmailSpan.textContent = email;
+//   userPasswordSpan.textContent = password;
+// }
 // if initials are entered display highscores with local storage
 
-
+// function saveHighscore() {
+//   var initials = document.querySelector("#initials").value;
+//   localStorage.setItem("initials", initials);
+//   localStorage.setItem("currentscore", currentscore);
+//   renderLastRegistered();
+// }
 
 
 
