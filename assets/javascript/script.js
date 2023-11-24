@@ -138,7 +138,7 @@ function getInitials() {
     
     event.preventDefault();
   
-    var highscore = (initals.value + " " + currentscore)
+    var highscore = (currentscore + " " + initals.value)
 
     localStorage.setItem("highscore", highscore);
 
