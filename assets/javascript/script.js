@@ -19,7 +19,7 @@ var cardhidden = document.querySelector("#card-hidden");
 
 var questionIndex = 0;
 var currentscore = 0;
-var chosenQuestion = ""; 
+var chosenQuestion = "";
 var initials = "";
 var highscoresList = [];
 
@@ -170,12 +170,16 @@ function getInitials() {
   
 }
 
+
+
+
+
+
 // submit button saves initials and score to local storage
 submitButton.addEventListener("click", function(event) {
   event.preventDefault();
-  var recentscore = (currentscore + "---" + initals.value)
-  // append highscores to child element ol of "scores"?
-  console.log(recentscore);
+      var recentscore = (currentscore + "---" + initals.value)
+      console.log(recentscore);
   storerecentscore();
   renderhighscores();
  })
@@ -191,21 +195,27 @@ function storerecentscore() {
 
 // The following function renders items in a list as <li> elements
 function renderhighscores() {
-  var recentscore = (currentscore + "---" + initals.value)
+      var recentscore = (currentscore + "---" + initals.value)
   // Clear todoList element and update todoCountSpan
   highscoresList.innerHTML = "";
-  highscoresCountSpan.textContent = recentscore.length;
+  highscoresCountSpan.textContent = recentscore;
+      console.log(highscoresList);
+  pushhighscores(recentscore);
+
   
-  // Render a new li for each score
+  // Render a new li for each score ??
   for (var i = 0; i < highscores.length; i++) {
     var highscores = highscores[i];
-
     var li = document.createElement("li");
     li.textContent = recentscore;
     li.setAttribute("data-index", i);
     highscoresList.push(recentscore);
     li.appendChild(highscoresList);
+    console.log(highscoresList);
   }}
+
+  var storedhighscores = JSON.parse(localStorage.getItem("highscoresList"));
+
 
 
 // if play again button is clicked, reload page to start over
