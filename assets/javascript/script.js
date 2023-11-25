@@ -13,7 +13,8 @@ var buttonchoices = ["#answer1", "#answer2", "#answer3", "#answer4"];
 var correct = document.querySelector("#correct");
 var incorrect = document.querySelector("#incorrect");
 
-var highschoresList = document.querySelector("#highscoresList");
+
+var highscoresList = document.querySelector("#highscoresList");
 var highscoresCountSpan = document.querySelector("#highscoresCountSpan");
 
 
@@ -27,6 +28,8 @@ var initials = "";
 
 $(cardhidden).css("display", "none");
 $(playagainButton).css("display", "none");
+
+
 
 // array of questions & answers
 var questions =
@@ -54,7 +57,6 @@ var questions =
 
 startButton.addEventListener("click", startGame);
 
-
 function startGame() {
     isWin = false;
     isLoss = false;
@@ -64,7 +66,7 @@ function startGame() {
     renderBlanks();
     // Prevents start button from being clicked when round is in progress
     startButton.disabled = true; 
-    console.log(currentscore);
+    console.log(currentscore);    
   }
 
   
@@ -147,7 +149,7 @@ function getInitials() {
     submitButton.addEventListener("click", function(event) {
     event.preventDefault();
     var highscore = (currentscore + "---" + initals.value)
-    // localStorage.setItem("highscore", highscore);
+    localStorage.setItem("highscore", highscore);
     
     console.log(highscore);
 
@@ -168,7 +170,6 @@ function getInitials() {
 submitButton.addEventListener("click", function(event) {
   event.preventDefault();
   var recentscore = (currentscore + "---" + initals.value)
-  var highscores = [];
   // append highscores to child element ol of "scores"?
   console.log(recentscore);
   // storerecentscore();
@@ -179,22 +180,21 @@ submitButton.addEventListener("click", function(event) {
 
 
 function storerecentscore() {
-  var recentscore = (currentscore + "---" + initals.value)
   // Stringify and set key in localStorage to todos array
+  var recentscore = (currentscore + "---" + initals.value)
   localStorage.setItem("recentscore", JSON.stringify(recentscore));
   // Get stored recentscore from localStorage?
 }
 
 
 
-
-
 // The following function renders items in a list as <li> elements
 function renderhighscores() {
+  var recentscore = (currentscore + "---" + initals.value)
   // Clear todoList element and update todoCountSpan
   highscoresList.innerHTML = "";
   highscoresCountSpan.textContent = highscores;
-
+  var highscoresList = [];
   // Render a new li for each score
   for (var i = 0; i < highscores.length; i++) {
     var highscores = highscores[i];
@@ -202,20 +202,13 @@ function renderhighscores() {
     var li = document.createElement("li");
     li.textContent = recentscore;
     li.setAttribute("data-index", i);
-
+    highscores.push(recentscore);
     li.appendChild(highscores);
     //highscores.push(highscores);
   }}
 
 
-
-
-
-
-
-
-
-  // if play again button is clicked, reload page to start over
+// if play again button is clicked, reload page to start over
 playagainButton.addEventListener("click", function(event) {
   location.reload();
 })
