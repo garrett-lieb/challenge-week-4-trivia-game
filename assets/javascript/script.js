@@ -162,13 +162,16 @@ function getInitials() {
 
 
 
-// submitButton.addEventListener("click", function(event) {
-//   event.preventDefault();
-//   var highscore = (currentscore + "---" + initals.value)
-//   // append highscores to child element ol of "scores"?
-//   scores.appendChild("#scores");
-  
-//  })
+submitButton.addEventListener("click", function(event) {
+  event.preventDefault();
+  var highscore = (currentscore + "---" + initals.value)
+ 
+  // append highscores to child element ol of "scores"?
+  console.log(highscore);
+  // document.footer.createElement("li");
+  listElement = document.querySelector("#scores");
+  listElement.appendChild(highscore);
+ })
 
 
 // if play again button is clicked, reload page
