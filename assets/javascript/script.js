@@ -200,10 +200,13 @@ function renderhighscores() {
   highscoresList.innerHTML = "";
   highscoresCountSpan.textContent = recentscore;
       console.log(highscoresList);
-  pushhighscores(recentscore);
+  //pushhighscores(recentscore);
 
   
   // Render a new li for each score ??
+
+
+  // devtools doesnt read the length for this loop?
   for (var i = 0; i < highscores.length; i++) {
     var highscores = highscores[i];
     var li = document.createElement("li");
@@ -214,7 +217,7 @@ function renderhighscores() {
     console.log(highscoresList);
   }}
 
-  var storedhighscores = JSON.parse(localStorage.getItem("highscoresList"));
+var storedhighscores = JSON.parse(localStorage.getItem("highscoresList"));
 
 
 
