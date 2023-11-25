@@ -1,6 +1,8 @@
 const startButton = document.querySelector("#start-button");
 const submitButton = document.querySelector("#submit-button");
 const playagainButton = document.querySelector("#playagain-button");
+
+
 var timeleft = document.querySelector("#timeleft");
 var timerElement = document.querySelector("#timer-count");
 var questionElement = document.querySelector("#question");
@@ -11,12 +13,16 @@ var buttonchoices = ["#answer1", "#answer2", "#answer3", "#answer4"];
 var correct = document.querySelector("#correct");
 var incorrect = document.querySelector("#incorrect");
 
-var Highscores = document.querySelector("#highscores");
+var highschoresList = document.querySelector("#highscoresList");
+var highscoresCountSpan = document.querySelector("#highscoresCountSpan");
+
+
 var cardhidden = document.querySelector("#card-hidden");
+
 var questionIndex = 0;
 var currentscore = 0;
 var chosenQuestion = ""; 
-// var scores = "";
+
 var initials = "";
 
 $(cardhidden).css("display", "none");
@@ -159,28 +165,60 @@ function getInitials() {
 }
 
 // submit button saves initials and score to local storage
-
-
-
 submitButton.addEventListener("click", function(event) {
   event.preventDefault();
-  var highscore = (currentscore + "---" + initals.value)
- 
+  var recentscore = (currentscore + "---" + initals.value)
+  var highscores = [];
   // append highscores to child element ol of "scores"?
-  console.log(highscore);
-  // document.footer.createElement("li");
-  listElement = document.querySelector("#scores");
-  listElement.appendChild(highscore);
+  console.log(recentscore);
+  // storerecentscore();
+  // renderhighscores();
  })
 
 
-// if play again button is clicked, reload page
+
+
+function storerecentscore() {
+  var recentscore = (currentscore + "---" + initals.value)
+  // Stringify and set key in localStorage to todos array
+  localStorage.setItem("recentscore", JSON.stringify(recentscore));
+  // Get stored recentscore from localStorage?
+}
+
+
+
+
+
+// The following function renders items in a list as <li> elements
+function renderhighscores() {
+  // Clear todoList element and update todoCountSpan
+  highscoresList.innerHTML = "";
+  highscoresCountSpan.textContent = highscores;
+
+  // Render a new li for each score
+  for (var i = 0; i < highscores.length; i++) {
+    var highscores = highscores[i];
+
+    var li = document.createElement("li");
+    li.textContent = recentscore;
+    li.setAttribute("data-index", i);
+
+    li.appendChild(highscores);
+    //highscores.push(highscores);
+  }}
+
+
+
+
+
+
+
+
+
+  // if play again button is clicked, reload page to start over
 playagainButton.addEventListener("click", function(event) {
   location.reload();
 })
-
-
-
 
 
 
