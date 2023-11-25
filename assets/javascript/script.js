@@ -21,10 +21,11 @@ var questionIndex = 0;
 var currentscore = 0;
 var chosenQuestion = ""; 
 var initials = "";
+var highscoresList = [];
 
 $(cardhidden).css("display", "none");
 $(playagainButton).css("display", "none");
-
+$(answerContainer).css("display", "none");
 
 
 // array of questions & answers
@@ -53,6 +54,8 @@ var questions =
 
 startButton.addEventListener("click", startGame);
 
+  /////!!!!!!!!!!// FIX TIMER COUNT ////////////////////!!!!!!!!!?/////////
+
 function startGame() {
     isWin = false;
     isLoss = false;
@@ -61,11 +64,10 @@ function startGame() {
      // load questions //load answers 
     renderBlanks();
     // Prevents start button from being clicked when round is in progress
-    startButton.disabled = true; 
+    startButton.disabled = true;
+    answerContainer.style.display = ("display", "flex");
     console.log(currentscore);    
   }
-
-  
 
 // create timer function
 function startTimer() {
@@ -79,18 +81,23 @@ function startTimer() {
       if (timerCount >= 0) {
         // Tests if win condition is met
         if (isWin && timerCount > 0) {
+          $(startButton).css("display", "none");
+          $(playagainButton).css("flex");
           // Clears interval and stops timer
           clearInterval(timer);
+          getInitials();
         }
       }
-      // Tests if time has run out
+      // Tests if time has run out, makes sure timer never goes below zero
       if (timerCount <= 0) {
         timerElement.textContent = "You ran out of time :(";
         // Clears interval
         clearInterval(timer);
         getInitials();
         $(startButton).css("display", "none");
-        $(playagainButton).css("display", "flex");
+        $(playagainButton).css("flex");
+        $(questionElement).css("display", "none");
+        $(answerContainer).css("display", "none");
       }
     }, 1000); 
   }
@@ -150,9 +157,9 @@ function getInitials() {
     
     console.log(highscore);
 
+    $(answerContainer).css("display", "none");  
     $(cardhidden).css("display", "none");
     $(questionElement).css("display", "none");
-    $(answerContainer).css("display", "none");
     $(playagainButton).css("display", "flex");
     $(timerElement).css("display", "none");
     $(currentscoreEl).css("display", "none");
@@ -169,10 +176,9 @@ submitButton.addEventListener("click", function(event) {
   var recentscore = (currentscore + "---" + initals.value)
   // append highscores to child element ol of "scores"?
   console.log(recentscore);
-  // storerecentscore();
-  // renderhighscores();
+  storerecentscore();
+  renderhighscores();
  })
-
 
 
 
@@ -183,25 +189,22 @@ function storerecentscore() {
   // Get stored recentscore from localStorage?
 }
 
-
-
 // The following function renders items in a list as <li> elements
 function renderhighscores() {
   var recentscore = (currentscore + "---" + initals.value)
   // Clear todoList element and update todoCountSpan
   highscoresList.innerHTML = "";
-  highscoresCountSpan.textContent = highscores;
-  var highscoresList = [];
+  highscoresCountSpan.textContent = recentscore.length;
+  
   // Render a new li for each score
   for (var i = 0; i < highscores.length; i++) {
     var highscores = highscores[i];
 
-    // var li = document.createElement("li");
-    // li.textContent = recentscore;
-    // li.setAttribute("data-index", i);
-    // highscores.push(recentscore);
-    // li.appendChild(highscores);
-    // highscores.push(highscores);
+    var li = document.createElement("li");
+    li.textContent = recentscore;
+    li.setAttribute("data-index", i);
+    highscoresList.push(recentscore);
+    li.appendChild(highscoresList);
   }}
 
 
