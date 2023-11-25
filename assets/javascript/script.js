@@ -1,6 +1,7 @@
 const startButton = document.querySelector("#start-button");
 const submitButton = document.querySelector("#submit-button");
 const playagainButton = document.querySelector("#playagain-button");
+var timeleft = document.querySelector("#timeleft");
 var timerElement = document.querySelector("#timer-count");
 var questionElement = document.querySelector("#question");
 var answerContainer = document.querySelector(".answers");
@@ -15,7 +16,7 @@ var cardhidden = document.querySelector("#card-hidden");
 var questionIndex = 0;
 var currentscore = 0;
 var chosenQuestion = ""; 
-// var Highscores = "";
+// var scores = "";
 var initials = "";
 
 $(cardhidden).css("display", "none");
@@ -141,7 +142,7 @@ function getInitials() {
     
     event.preventDefault();
   
-    var highscore = (currentscore + " " + initals.value)
+    var highscore = (currentscore + "---" + initals.value)
 
     localStorage.setItem("highscore", highscore);
 
@@ -152,45 +153,32 @@ function getInitials() {
     $(questionElement).css("display", "none");
     $(answerContainer).css("display", "none");
     $(playagainButton).css("display", "flex");
+    $(timerElement).css("display", "none");
+    $(currentscoreEl).css("display", "none");
+    $(answerfeedback).css("display", "none");
+    $(timeleft).css("display", "none");
+    $(startButton).css("display", "none");
   })
   
 }
 
 // submit button saves initials and score to local storage
 
-submitButton.addEventListener("click", function(event) {
-  event.preventDefault();
-  ///append highscores to child element ol of "scores"
+
+// submitButton.addEventListener("click", function(event) {
+//   event.preventDefault();
+//   var highscore = (currentscore + "---" + initals.value)
+//   // append highscores to child element ol of "scores"?
+//   scores.appendChild("#scores");
   
-})
+//  })
+
 
 // if play again button is clicked, reload page
 playagainButton.addEventListener("click", function(event) {
   location.reload();
 })
 
-
-// function renderLastRegistered() {
-//   var initials = localStorage.getItem("initials");
-//   var currentscore = localStorage.getItem("currentscore");
-
-// localStorage.setItem("highscore", JSON.stringify(highscore));
- 
-// set new submission to local storage 
- 
-//renderLastRegistered();
-
-
-
-// if initials are entered display highscores with local storage
-
-
-// function saveHighscore() {
-//   var initials = document.querySelector("#initials").value;
-//   localStorage.setItem("initials", initials);
-//   localStorage.setItem("currentscore", currentscore);
-//   renderLastRegistered();
-// }
 
 
 

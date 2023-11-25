@@ -13,7 +13,7 @@
         <h1>javascript quiz</h1>
         <p>this is a short quiz to review some javascript info</p>
         <button id="start-button">Start</button>
-        <h2>Time Left</h2>
+        <h2 id="timeleft">Time Left</h2>
         <div id="timer-count"> 60 seconds left</div>
         <div id="current-score">0</div>
         <div id="answer-feedback"></div>
@@ -33,7 +33,9 @@
         <footer>
             <h4>High Scores</h4>
             <div id="highscores">
-                <ol id="scores"></ol>
+                <ol id="scores">
+                    <li><span></span></li>
+                </ol>
             </div>
             <div id="card-hidden">
                 <h2>Enter Initals</h2>
