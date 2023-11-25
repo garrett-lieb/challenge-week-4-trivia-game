@@ -1,5 +1,6 @@
 const startButton = document.querySelector("#start-button");
 const submitButton = document.querySelector("#submit-button");
+const playagainButton = document.querySelector("#playagain-button");
 var timerElement = document.querySelector("#timer-count");
 var questionElement = document.querySelector("#question");
 var answerContainer = document.querySelector(".answers");
@@ -18,6 +19,7 @@ var chosenQuestion = "";
 var initials = "";
 
 $(cardhidden).css("display", "none");
+$(playagainButton).css("display", "none");
 
 // array of questions & answers
 var questions =
@@ -133,6 +135,7 @@ function startTimer() {
 // if game ends prompt to enter initials and save score to local storage
 function getInitials() {
   $(cardhidden).css("display", "flex");
+  $(playagainButton).css("display", "none");
 
     submitButton.addEventListener("click", function(event) {
     
@@ -142,15 +145,36 @@ function getInitials() {
 
     localStorage.setItem("highscore", highscore);
 
-    localStorage.setItem("currentscore", currentscore);
-    
-    
     console.log(highscore);
+
+    
+    $(cardhidden).css("display", "none");
+    $(questionElement).css("display", "none");
+    $(answerContainer).css("display", "none");
+    $(playagainButton).css("display", "flex");
   })
   
 }
 
-localStorage.setItem("highscore", JSON.stringify(highscore));
+// submit button saves initials and score to local storage
+
+submitButton.addEventListener("click", function(event) {
+  event.preventDefault();
+  ///append highscores to child element ol of "scores"
+  
+})
+
+// if play again button is clicked, reload page
+playagainButton.addEventListener("click", function(event) {
+  location.reload();
+})
+
+
+// function renderLastRegistered() {
+//   var initials = localStorage.getItem("initials");
+//   var currentscore = localStorage.getItem("currentscore");
+
+// localStorage.setItem("highscore", JSON.stringify(highscore));
  
 // set new submission to local storage 
  
