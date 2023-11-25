@@ -13,17 +13,13 @@ var buttonchoices = ["#answer1", "#answer2", "#answer3", "#answer4"];
 var correct = document.querySelector("#correct");
 var incorrect = document.querySelector("#incorrect");
 
-
 var highscoresList = document.querySelector("#highscoresList");
 var highscoresCountSpan = document.querySelector("#highscoresCountSpan");
-
-
 var cardhidden = document.querySelector("#card-hidden");
 
 var questionIndex = 0;
 var currentscore = 0;
 var chosenQuestion = ""; 
-
 var initials = "";
 
 $(cardhidden).css("display", "none");
@@ -60,7 +56,7 @@ startButton.addEventListener("click", startGame);
 function startGame() {
     isWin = false;
     isLoss = false;
-    timerCount = 60;
+    timerCount = 5;
     startTimer()
      // load questions //load answers 
     renderBlanks();
@@ -88,12 +84,13 @@ function startTimer() {
         }
       }
       // Tests if time has run out
-      if (timerCount === 0) {
+      if (timerCount <= 0) {
         timerElement.textContent = "You ran out of time :(";
         // Clears interval
         clearInterval(timer);
         getInitials();
-        startButton.disabled = false;
+        $(startButton).css("display", "none");
+        $(playagainButton).css("display", "flex");
       }
     }, 1000); 
   }
@@ -199,12 +196,12 @@ function renderhighscores() {
   for (var i = 0; i < highscores.length; i++) {
     var highscores = highscores[i];
 
-    var li = document.createElement("li");
-    li.textContent = recentscore;
-    li.setAttribute("data-index", i);
-    highscores.push(recentscore);
-    li.appendChild(highscores);
-    //highscores.push(highscores);
+    // var li = document.createElement("li");
+    // li.textContent = recentscore;
+    // li.setAttribute("data-index", i);
+    // highscores.push(recentscore);
+    // li.appendChild(highscores);
+    // highscores.push(highscores);
   }}
 
 
