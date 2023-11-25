@@ -139,16 +139,12 @@ function getInitials() {
   $(playagainButton).css("display", "none");
 
     submitButton.addEventListener("click", function(event) {
-    
     event.preventDefault();
-  
     var highscore = (currentscore + "---" + initals.value)
-
-    localStorage.setItem("highscore", highscore);
-
+    // localStorage.setItem("highscore", highscore);
+    
     console.log(highscore);
 
-    
     $(cardhidden).css("display", "none");
     $(questionElement).css("display", "none");
     $(answerContainer).css("display", "none");
@@ -163,6 +159,7 @@ function getInitials() {
 }
 
 // submit button saves initials and score to local storage
+
 
 
 // submitButton.addEventListener("click", function(event) {
