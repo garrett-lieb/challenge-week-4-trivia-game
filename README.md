@@ -17,7 +17,7 @@ When the Chrome DevTools are opened by pressing Command+Option+I (macOS) or Cont
 
 ## Credits
 
-N/A
+functions renderBlanks() and checkAnswer() were created during a tutoring session with edX/ of Orgeon bootcamp tutor Rene Trevino on Friday, Nov 24, 2023. 
 
 ## Liscence 
 

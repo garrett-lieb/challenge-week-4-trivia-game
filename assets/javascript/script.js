@@ -21,7 +21,7 @@ var questionIndex = 0;
 var currentscore = 0;
 var chosenQuestion = "";
 var initials = "";
-var highscoresList = [];
+
 
 $(cardhidden).css("display", "none");
 $(playagainButton).css("display", "none");
@@ -54,12 +54,11 @@ var questions =
 
 startButton.addEventListener("click", startGame);
 
-  /////!!!!!!!!!!// FIX TIMER COUNT ////////////////////!!!!!!!!!?/////////
-
+// timer variables
 function startGame() {
     isWin = false;
     isLoss = false;
-    timerCount = 5;
+    timerCount = 60;
     startTimer()
      // load questions //load answers 
     renderBlanks();
@@ -101,7 +100,7 @@ function startTimer() {
       }
     }, 1000); 
   }
-
+  
   function renderBlanks() {
     chosenQuestion = questions[questionIndex].question;
     questionElement.textContent = chosenQuestion;
@@ -152,11 +151,9 @@ function getInitials() {
 
     submitButton.addEventListener("click", function(event) {
     event.preventDefault();
-    var highscore = (currentscore + "---" + initals.value)
+    var highscore = (currentscore + "---" + initials.value);
     localStorage.setItem("highscore", highscore);
     
-    console.log(highscore);
-
     $(answerContainer).css("display", "none");  
     $(cardhidden).css("display", "none");
     $(questionElement).css("display", "none");
@@ -171,61 +168,55 @@ function getInitials() {
 }
 
 
-
-
-
-
 // submit button saves initials and score to local storage
 submitButton.addEventListener("click", function(event) {
   event.preventDefault();
-      var recentscore = (currentscore + "---" + initals.value)
-      console.log(recentscore);
-  storerecentscore();
-  renderhighscores();
+      var highscore = (currentscore + "---" + initals.value);
+      console.log(highscore);
+      localStorage.setItem("highscore", highscore);
+  highscoresList.ol.appendChild(highscore);
+  renderhighscoresList();
  })
 
 
+// The following function renders scores in a highscore list as <li> elements
+function renderhighscoresList() {
+  var highscoresList = [];
 
-function storerecentscore() {
-  // Stringify and set key in localStorage to todos array
-  var recentscore = (currentscore + "---" + initals.value)
-  localStorage.setItem("recentscore", JSON.stringify(recentscore));
-  // Get stored recentscore from localStorage?
+  // Render a new li for each hichsore
+  for (var i = 0; i < todos.length; i++) {
+    var highscoresList = highscoresList[i];
+
+    var li = document.createElement("li");
+    li.textContent = highscoresList;
+    li.setAttribute("data-index", i);
+    highscoresList.appendChild(li);
+  }
 }
 
-// The following function renders items in a list as <li> elements
-function renderhighscores() {
-      var recentscore = (currentscore + "---" + initals.value)
-  // Clear todoList element and update todoCountSpan
-  highscoresList.innerHTML = "";
-  highscoresCountSpan.textContent = recentscore;
-      console.log(highscoresList);
-  //pushhighscores(recentscore);
+// This function is being called below and will run when the page loads.
+function init() {
+  // Get stored todos from localStorage
+  var storedhighscoresList = JSON.parse(localStorage.getItem("highscoresList"));
+  // If highscores were retrieved from localStorage, update the highscores array to it
+  if (storedhighscoresList !== null) {
+    highscoresList = storedhighscoresList;
+  }
+  // This is a helper function that will render todos to the DOM
+  renderhighscoresList();
+}
 
-  
-  // Render a new li for each score ??
-
-
-  // devtools doesnt read the length for this loop?
-  for (var i = 0; i < highscores.length; i++) {
-    var highscores = highscores[i];
-    var li = document.createElement("li");
-    li.textContent = recentscore;
-    li.setAttribute("data-index", i);
-    highscoresList.push(recentscore);
-    li.appendChild(highscoresList);
-    console.log(highscoresList);
-  }}
-
-var storedhighscores = JSON.parse(localStorage.getItem("highscoresList"));
-
+function storehighscoresList() {
+  // Stringify and set key in localStorage to todos array
+  localStorage.setItem("highscoresList", JSON.stringify(highscoresList));
+}
 
 
 // if play again button is clicked, reload page to start over
-playagainButton.addEventListener("click", function(event) {
+playagainButton.addEventListener("click", function() {
   location.reload();
+  init();
 })
-
 
 
 
