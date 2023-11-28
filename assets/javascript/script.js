@@ -20,7 +20,7 @@ var cardhidden = document.querySelector("#card-hidden");
 var questionIndex = 0;
 var currentscore = 0;
 var chosenQuestion = "";
-var initials = "";
+var initials = document.querySelector("#initials");
 var highscores = [];
 
 
@@ -115,6 +115,7 @@ function startTimer() {
       }
     }
   }
+
 // make container clickable and add event target
   answerContainer.addEventListener("click", function(event){
     var chosenAnswer = event.target
@@ -123,6 +124,7 @@ function startTimer() {
       checkAnswer(chosenAnswer.textContent);
     }
   })
+
 //check if answer is correct or incorrect and display feedback
   function checkAnswer(chosenAnswer) {
   console.log(chosenQuestion, chosenAnswer, "clicked")
@@ -145,7 +147,6 @@ function startTimer() {
   } 
 }
 
-
 // if game ends prompt to enter initials and adjust display
 function getInitials() {
   $(cardhidden).css("display", "flex");
@@ -166,15 +167,6 @@ function getInitials() {
   })
   
 }
-
-// submit button initiates process that saves initials and score to local storage
-submitButton.addEventListener("click", function(event) {
-  event.preventDefault();
-  // var recentscore = (currentscore + "---" + initals.value);
-  console.log(recentscore);
-  storeScores();
-  init();
- })
 
  // store scores in local storage
 function storeScores() {
@@ -198,7 +190,7 @@ function init() {
 // add score to array and sort from highest to lowest
 function renderhighscoresList() {
   $(submitButton).css("display", "none");
-  var highscores = localStorage.getItem("highscores");
+  var highscores = JSON.parse(localStorage.getItem("highscores"));
   var highscoreArray = highscores.split(",");
   highscoreArray.sort(function(a, b) {
     return b - a;
@@ -216,7 +208,6 @@ function renderhighscoresList() {
 playagainButton.addEventListener("click", function() {
   location.reload();
 })
-
 
 // // clear highscores
 // clearButton.addEventListener("click", function() {
