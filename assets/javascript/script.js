@@ -153,8 +153,6 @@ function getInitials() {
 
     submitButton.addEventListener("click", function(event) {
     event.preventDefault();
-    var highscore = (currentscore + "---" + initials.value);
-    localStorage.setItem("highscore", highscore);
     
     $(answerContainer).css("display", "none");  
     $(cardhidden).css("display", "none");
@@ -169,11 +167,10 @@ function getInitials() {
   
 }
 
-
 // submit button initiates process that saves initials and score to local storage
 submitButton.addEventListener("click", function(event) {
   event.preventDefault();
-  var recentscore = (currentscore + "---" + initals.value);
+  // var recentscore = (currentscore + "---" + initals.value);
   console.log(recentscore);
   storeScores();
   init();
@@ -181,7 +178,12 @@ submitButton.addEventListener("click", function(event) {
 
  // store scores in local storage
 function storeScores() {
+  var highscores = [
+    {score: currentscore,
+    initals: initals.value}
+  ];
   window.localStorage.setItem("highscores", JSON.stringify(highscores));
+  init();
 }
 
 // keep highscores in local storage and display on page
@@ -193,11 +195,9 @@ function init() {
   renderhighscoresList();
 }
 
-
 // add score to array and sort from highest to lowest
 function renderhighscoresList() {
   $(submitButton).css("display", "none");
-  var highscore = (currentscore + "---" + initals.value);
   var highscores = localStorage.getItem("highscores");
   var highscoreArray = highscores.split(",");
   highscoreArray.sort(function(a, b) {
@@ -206,7 +206,7 @@ function renderhighscoresList() {
   for (var i = 0; i < highscoreArray.length; i++) {
     var highscores = highscoreArray[i];
     var li = document.createElement("li");
-    li.textContent = highscore;
+    li.textContent = highscores;
     li.setAttribute("data-index", i);
     highscoresList.appendChild(li);
   }
@@ -216,6 +216,7 @@ function renderhighscoresList() {
 playagainButton.addEventListener("click", function() {
   location.reload();
 })
+
 
 // // clear highscores
 // clearButton.addEventListener("click", function() {
