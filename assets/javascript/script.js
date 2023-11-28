@@ -153,8 +153,8 @@ function getInitials() {
   $(playagainButton).css("display", "none");
     
     submitButton.addEventListener("click", function(event) {
+    
     event.preventDefault();
-    storeScores();
     $(answerContainer).css("display", "none");  
     $(cardhidden).css("display", "none");
     $(questionElement).css("display", "none");
@@ -164,6 +164,7 @@ function getInitials() {
     $(timeleft).css("display", "none");
     $(startButton).css("display", "none");
     $(playagainButton).css("display", "flex");
+    
   })
 }
 
@@ -192,7 +193,7 @@ function renderScores() {
   for (var i = 0; i < highscores.length; i++) {
     var highscore = highscores[i];
     var li = document.createElement("li");
-    li.textContent = highscore.initials + " " + highscore.currentscore;
+    li.textContent = highscore;
     li.setAttribute("data-index", i);
     highscoresList.appendChild(li);
   }
