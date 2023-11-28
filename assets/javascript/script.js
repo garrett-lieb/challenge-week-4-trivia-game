@@ -151,54 +151,48 @@ function startTimer() {
 function getInitials() {
   $(cardhidden).css("display", "flex");
   $(playagainButton).css("display", "none");
-
+    
     submitButton.addEventListener("click", function(event) {
     event.preventDefault();
-    
+    storeScores();
     $(answerContainer).css("display", "none");  
     $(cardhidden).css("display", "none");
     $(questionElement).css("display", "none");
-    $(playagainButton).css("display", "flex");
     $(timerElement).css("display", "none");
     $(currentscoreEl).css("display", "none");
     $(answerfeedback).css("display", "none");
     $(timeleft).css("display", "none");
     $(startButton).css("display", "none");
+    $(playagainButton).css("display", "flex");
   })
-  
 }
 
  // store scores in local storage
 function storeScores() {
+  localStorage.setItem("highscores", JSON.stringify(highscores));
   var highscores = [
     {score: currentscore,
     initals: initals.value}
   ];
-  window.localStorage.setItem("highscores", JSON.stringify(highscores));
-  init();
 }
 
-// keep highscores in local storage and display on page
-function init() {
+// get scores from local storage
+function getScores() {
   var storedScores = JSON.parse(localStorage.getItem("highscores"));
   if (storedScores !== null) {
     highscores = storedScores;
   }
-  renderhighscoresList();
 }
 
-// add score to array and sort from highest to lowest
-function renderhighscoresList() {
-  $(submitButton).css("display", "none");
-  var highscores = JSON.parse(localStorage.getItem("highscores"));
-  var highscoreArray = highscores.split(",");
-  highscoreArray.sort(function(a, b) {
-    return b - a;
-  });
-  for (var i = 0; i < highscoreArray.length; i++) {
-    var highscores = highscoreArray[i];
+// display scores on page
+function renderScores() {
+  highscoresList.innerHTML = "";
+  highscores = JSON.parse(localStorage.getItem("highscores")) || [];
+  highscoresCountSpan.textContent = highscores.length;
+  for (var i = 0; i < highscores.length; i++) {
+    var highscore = highscores[i];
     var li = document.createElement("li");
-    li.textContent = highscores;
+    li.textContent = highscore.initials + " " + highscore.currentscore;
     li.setAttribute("data-index", i);
     highscoresList.appendChild(li);
   }
@@ -209,8 +203,8 @@ playagainButton.addEventListener("click", function() {
   location.reload();
 })
 
-// // clear highscores
-// clearButton.addEventListener("click", function() {
-//   localStorage.clear();
-//   location.reload();
-// })
+// clear highscores
+clearButton.addEventListener("click", function() {
+  localStorage.clear();
+  location.reload();
+})
