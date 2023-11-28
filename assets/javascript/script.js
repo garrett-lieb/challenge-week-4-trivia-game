@@ -214,6 +214,7 @@ function renderhighscoresList() {
 
 // if play again button is clicked, reload page to start over
 playagainButton.addEventListener("click", function() {
+  init();
   location.reload();
 })
 
