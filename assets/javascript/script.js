@@ -190,7 +190,6 @@ function init() {
     highscores = storedScores;
   }
   renderhighscoresList();
-  //reset question index and timer?
 }
 
 
@@ -223,6 +222,3 @@ clearButton.addEventListener("click", function() {
   localStorage.clear();
   location.reload();
 })
-
-
-
