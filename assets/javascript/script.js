@@ -180,12 +180,12 @@ submitButton.addEventListener("click", function(event) {
 
  // store scores in local storage
 function storeScores() {
-  window.localStorage.setItem("highscores", JSON.stringify(recentscore));
+  window.localStorage.setItem("highscores", JSON.stringify(highscores));
 }
 
 // keep highscores in local storage and display on page
 function init() {
-  var storedScores = JSON.parse(localStorage.getItem("recentscore"));
+  var storedScores = JSON.parse(localStorage.getItem("highscores"));
   if (storedScores !== null) {
     highscores = storedScores;
   }
@@ -197,7 +197,7 @@ function init() {
 function renderhighscoresList() {
   $(submitButton).css("display", "none");
   var highscore = (currentscore + "---" + initals.value);
-  var highscores = localStorage.getItem("highscore");
+  var highscores = localStorage.getItem("highscores");
   var highscoreArray = highscores.split(",");
   highscoreArray.sort(function(a, b) {
     return b - a;
