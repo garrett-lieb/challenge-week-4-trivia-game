@@ -102,6 +102,7 @@ function startTimer() {
     }, 1000); 
   }
   
+  // render questions and answers
   function renderBlanks() {
     chosenQuestion = questions[questionIndex].question;
     questionElement.textContent = chosenQuestion;
@@ -114,7 +115,7 @@ function startTimer() {
       }
     }
   }
-
+// make container clickable and add event target
   answerContainer.addEventListener("click", function(event){
     var chosenAnswer = event.target
     if (chosenAnswer.matches("button")) {
@@ -122,7 +123,7 @@ function startTimer() {
       checkAnswer(chosenAnswer.textContent);
     }
   })
-
+//check if answer is correct or incorrect and display feedback
   function checkAnswer(chosenAnswer) {
   console.log(chosenQuestion, chosenAnswer, "clicked")
   var correctAnswer = questions[questionIndex].answer;
@@ -145,7 +146,7 @@ function startTimer() {
 }
 
 
-// if game ends prompt to enter initials and save score to local storage
+// if game ends prompt to enter initials and adjust display
 function getInitials() {
   $(cardhidden).css("display", "flex");
   $(playagainButton).css("display", "none");
@@ -169,13 +170,13 @@ function getInitials() {
 }
 
 
-// submit button saves initials and score to local storage
+// submit button initiates process that saves initials and score to local storage
 submitButton.addEventListener("click", function(event) {
   event.preventDefault();
   var recentscore = (currentscore + "---" + initals.value);
   console.log(recentscore);
-  renderhighscoresList();
   storeScores();
+  init();
  })
 
  // store scores in local storage
@@ -213,7 +214,6 @@ function renderhighscoresList() {
 
 // if play again button is clicked, reload page to start over
 playagainButton.addEventListener("click", function() {
-  init();
   location.reload();
 })
 
