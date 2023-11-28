@@ -1,7 +1,7 @@
 const startButton = document.querySelector("#start-button");
 const submitButton = document.querySelector("#submit-button");
 const playagainButton = document.querySelector("#playagain-button");
-
+const clearButton = document.querySelector("#clear-button");
 
 var timeleft = document.querySelector("#timeleft");
 var timerElement = document.querySelector("#timer-count");
@@ -21,6 +21,7 @@ var questionIndex = 0;
 var currentscore = 0;
 var chosenQuestion = "";
 var initials = "";
+var highscores = [];
 
 
 $(cardhidden).css("display", "none");
@@ -171,55 +172,57 @@ function getInitials() {
 // submit button saves initials and score to local storage
 submitButton.addEventListener("click", function(event) {
   event.preventDefault();
-      var highscore = (currentscore + "---" + initals.value);
-      console.log(highscore);
-      localStorage.setItem("highscore", highscore);
-  highscoresList.ol.appendChild(highscore);
+  var recentscore = (currentscore + "---" + initals.value);
+  console.log(recentscore);
   renderhighscoresList();
+  storeScores();
  })
 
+ // store scores in local storage
+function storeScores() {
+  window.localStorage.setItem("highscores", JSON.stringify(recentscore));
+}
 
-// The following function renders scores in a highscore list as <li> elements
+// keep highscores in local storage and display on page
+function init() {
+  var storedScores = JSON.parse(localStorage.getItem("recentscore"));
+  if (storedScores !== null) {
+    highscores = storedScores;
+  }
+  renderhighscoresList();
+  //reset question index and timer?
+}
+
+
+// add score to array and sort from highest to lowest
 function renderhighscoresList() {
-  var highscoresList = [];
-
-  // Render a new li for each hichsore
-  for (var i = 0; i < todos.length; i++) {
-    var highscoresList = highscoresList[i];
-
+  $(submitButton).css("display", "none");
+  var highscore = (currentscore + "---" + initals.value);
+  var highscores = localStorage.getItem("highscore");
+  var highscoreArray = highscores.split(",");
+  highscoreArray.sort(function(a, b) {
+    return b - a;
+  });
+  for (var i = 0; i < highscoreArray.length; i++) {
+    var highscores = highscoreArray[i];
     var li = document.createElement("li");
-    li.textContent = highscoresList;
+    li.textContent = highscore;
     li.setAttribute("data-index", i);
     highscoresList.appendChild(li);
   }
 }
 
-// This function is being called below and will run when the page loads.
-function init() {
-  // Get stored todos from localStorage
-  var storedhighscoresList = JSON.parse(localStorage.getItem("highscoresList"));
-  // If highscores were retrieved from localStorage, update the highscores array to it
-  if (storedhighscoresList !== null) {
-    highscoresList = storedhighscoresList;
-  }
-  // This is a helper function that will render todos to the DOM
-  renderhighscoresList();
-}
-
-function storehighscoresList() {
-  // Stringify and set key in localStorage to todos array
-  localStorage.setItem("highscoresList", JSON.stringify(highscoresList));
-}
-
-
 // if play again button is clicked, reload page to start over
 playagainButton.addEventListener("click", function() {
-  location.reload();
   init();
+  location.reload();
 })
 
-
-
+// clear highscores
+clearButton.addEventListener("click", function() {
+  localStorage.clear();
+  location.reload();
+})
 
 
 
