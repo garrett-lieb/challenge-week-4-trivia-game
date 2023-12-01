@@ -58,6 +58,7 @@ startButton.addEventListener("click", startGame);
 
 // timer variables
 function startGame() {
+  
     isWin = false;
     isLoss = false;
     timerCount = 60;
@@ -67,7 +68,7 @@ function startGame() {
     // Prevents start button from being clicked when round is in progress
     startButton.disabled = true;
     answerContainer.style.display = ("display", "flex");
-    console.log(currentscore);    
+    console.log(currentscore);
   }
 
 // create timer function
@@ -166,6 +167,18 @@ function getInitials() {
       highscore.push(newScore);
       window.localStorage.setItem('highscores', JSON.stringify(highscore));
     }
+    // get scores from locala storage and display scores on page
+// get score from local storage array and append to list
+// get initials from local storage array and append to score based on index value
+function displayScores() {
+  var highscore = JSON.parse(localStorage.getItem("highscores")) || [];
+  for (var i = 0; i < highscore.length; i++) {
+    var newScore = document.createElement("li");
+    newScore.textContent = highscore[i].score + " " + highscore[i].newinitials;
+    highscoresList.appendChild(newScore);
+  }
+}
+displayScores();
     // hide timer and questions
     function hideStuff() {
     $(answerContainer).css("display", "none");  
@@ -182,23 +195,16 @@ function getInitials() {
   })
 }
 
-// display scores on page
-function displayScores() {
-  var highscore = JSON.parse(localStorage.getItem("highscores")) || [];
-  highscore.forEach(function(score) {
-    var li = document.createElement("li");
-    li.textContent = score.newinitials + " " + score.score;
-    highscoresList.appendChild(li);
-  });
-}
+
 
 
 // if play again button is clicked, reload page to start over
 playagainButton.addEventListener("click", function() {
   location.reload();
+  displayScores();
 })
 
-// // clear highscores
+// clear highscores
 clearButton.addEventListener("click", function() {
   localStorage.clear();
   location.reload();
