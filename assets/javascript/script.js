@@ -20,7 +20,8 @@ var cardhidden = document.querySelector("#card-hidden");
 var questionIndex = 0;
 var currentscore = 0;
 var chosenQuestion = "";
-var initials = document.querySelector("#initials");
+var initials = document.getElementById("initials");
+var currentScoreArray = []; 
 var highscores = [];
 
 
@@ -151,13 +152,24 @@ function startTimer() {
 function getInitials() {
   $(cardhidden).css("display", "flex");
   $(playagainButton).css("display", "none");
-    
+  var initalsEl =  
+
     submitButton.addEventListener("click", function(event) {
     
     event.preventDefault();
+    var newinitials = initials.value.trim();
     // save initals to array
+    if (newinitials === ""){
+      var highscore = JSON.parse(localStorage.getItem("highscores")) || [];
+      var newScore = {
+        newinitials: newinitials,
+        score: currentscore
+      };
+      highscore.push(newScore);
+      window.localStorage.setItem('highscores', JSON.stringify(highscore));
+    }
     // save scores to array
-
+    
 
     function hideStuff() {
     $(answerContainer).css("display", "none");  
@@ -174,11 +186,16 @@ function getInitials() {
   })
 }
 
-// get scores and initals from local storage
-function getScores() {};
-
 // display scores on page
-function renderScores() {};
+function renderScores() {
+  for (var i = 0; i < highscore.length; i++) {
+    var li = document.createElement("li");
+    li.textContent = highscore[i].initials + " " + highscore[i].score;
+    li.setAttribute("data-index", i);
+    highscoresList.appendChild(li);
+  }
+};
+
 
 // if play again button is clicked, reload page to start over
 playagainButton.addEventListener("click", function() {
