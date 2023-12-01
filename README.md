@@ -3,7 +3,20 @@ a java script trivia game developed as a homework exercise in week for of the ed
 
 ## Description
 
-This webpage as developed as a homework exercise for the edX Bootcamp at University of Oregon in November of 2023. It is a quiz on some pieces Javascript and API information learned during the course, and demonstrates the student's ability to manipulate the DOM and utilize Javascript to build a more complete user experience.  
+This webpage as developed as a homework exercise for the edX Bootcamp at University of Oregon in November of 2023. It is a quiz on some pieces Javascript and API information learned during the course, and demonstrates the student's ability to manipulate the DOM and utilize Javascript to build a more complete user experience.
+
+<img src="./assets/readme-images/1.png" width="100%" height="100%">
+<img src="./assets/readme-images/2.png" width="100%" height="100%">
+<img src="./assets/readme-images/3.png" width="100%" height="100%">
+<img src="./assets/readme-images/4.png" width="100%" height="100%">
+<!-- <img src="./assets/readme-images/5.png" width="100%" height="100%"> -->
+
+[Deployed Page: https://garrett-lieb.github.io/javascript-trivia-game/]
+
+[ Garrett Lieb GITHUB REPO: https://github.com/garrett-lieb/javascript-trivia-game ]
+
+
+
 
 ## Installtion
 
