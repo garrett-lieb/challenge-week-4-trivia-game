@@ -155,11 +155,10 @@ function getInitials() {
   var initalsEl =  
 
     submitButton.addEventListener("click", function(event) {
-    
     event.preventDefault();
     var newinitials = initials.value.trim();
-    // save initals to array
-    if (newinitials === ""){
+    // save initals to array // save scores to array
+    if (newinitials !== ""){
       var highscore = JSON.parse(localStorage.getItem("highscores")) || [];
       var newScore = {
         newinitials: newinitials,
@@ -168,9 +167,7 @@ function getInitials() {
       highscore.push(newScore);
       window.localStorage.setItem('highscores', JSON.stringify(highscore));
     }
-    // save scores to array
-    
-
+    // hide timer and questions
     function hideStuff() {
     $(answerContainer).css("display", "none");  
     $(cardhidden).css("display", "none");
@@ -187,14 +184,15 @@ function getInitials() {
 }
 
 // display scores on page
-function renderScores() {
-  for (var i = 0; i < highscore.length; i++) {
+function displayScores() {
+  var highscore = JSON.parse(localStorage.getItem("highscores")) || [];
+  highscore.forEach(function(score) {
     var li = document.createElement("li");
-    li.textContent = highscore[i].initials + " " + highscore[i].score;
-    li.setAttribute("data-index", i);
+    li.textContent = score.newinitials + " " + score.score;
     highscoresList.appendChild(li);
-  }
-};
+  });
+}
+
 
 
 // if play again button is clicked, reload page to start over
@@ -202,8 +200,8 @@ playagainButton.addEventListener("click", function() {
   location.reload();
 })
 
-// clear highscores
-clearButton.addEventListener("click", function() {
-  localStorage.clear();
-  location.reload();
-})
+// // clear highscores
+// clearButton.addEventListener("click", function() {
+//   localStorage.clear();
+//   location.reload();
+// })
