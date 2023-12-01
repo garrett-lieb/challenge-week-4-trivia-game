@@ -169,43 +169,35 @@ function getInitials() {
 }
 
  // store scores in local storage
-function storeScores() {
-  localStorage.setItem("highscores", JSON.stringify(highscores));
-  var highscores = [
-    {score: currentscore,
-    initals: initals.value}
-  ];
+// Initialize arrays to store scores and initials
+var scores = [];
+var initials = [];
+
+// Function to save scores and initials to arrays
+function saveScore(initial) {
+  scores.push(currentscore);
+  initials.push(initial);
 }
 
-// get scores from local storage
-function getScores() {
-  var storedScores = JSON.parse(localStorage.getItem("highscores"));
-  if (storedScores !== null) {
-    highscores = storedScores;
+// Function to display scores on page
+function displayScores() {
+  var scoreList = document.getElementById("score-list");
+  scoreList.innerHTML = ""; // Clear previous scores
+
+  for (var i = 0; i < scores.length; i++) {
+    var listItem = document.createElement("li");
+    listItem.textContent = initials[i] + " - " + scores[i];
+    scoreList.appendChild(listItem);
   }
 }
 
-// display scores on page
-function renderScores() {
-  highscoresList.innerHTML = "";
-  highscores = JSON.parse(localStorage.getItem("highscores")) || [];
-  highscoresCountSpan.textContent = highscores.length;
-  for (var i = 0; i < highscores.length; i++) {
-    var highscore = highscores[i];
-    var li = document.createElement("li");
-    li.textContent = highscore;
-    li.setAttribute("data-index", i);
-    highscoresList.appendChild(li);
-  }
-}
-
-// if play again button is clicked, reload page to start over
+// Event listener for play again button
 playagainButton.addEventListener("click", function() {
   location.reload();
-})
+});
 
-// clear highscores
+// Event listener for clear button
 clearButton.addEventListener("click", function() {
   localStorage.clear();
   location.reload();
-})
+});
