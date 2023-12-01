@@ -177,11 +177,11 @@ function displayScores() {
   for (var i = 0; i < highscore.length; i++) {
     var newScore = document.createElement("li");
     newScore.textContent = highscore[i].score + " " + highscore[i].newinitials;
-    // order from highest to lowest
+    // order from highest to lowest?
     highscore.sort(function(a, b) {
       return b.score - a.score;
     });
-    //put scores in list with numbers?
+    //put scores in list with numbers
     highscoresList.appendChild(newScore);
   }
 }
