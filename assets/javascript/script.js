@@ -151,8 +151,7 @@ function startTimer() {
 // if game ends prompt to enter initials and adjust display
 function getInitials() {
   $(cardhidden).css("display", "flex");
-  $(playagainButton).css("display", "none");
-  var initalsEl =  
+  $(playagainButton).css("display", "none"); 
 
     submitButton.addEventListener("click", function(event) {
     event.preventDefault();
@@ -194,14 +193,13 @@ function displayScores() {
 }
 
 
-
 // if play again button is clicked, reload page to start over
 playagainButton.addEventListener("click", function() {
   location.reload();
 })
 
 // // clear highscores
-// clearButton.addEventListener("click", function() {
-//   localStorage.clear();
-//   location.reload();
-// })
+clearButton.addEventListener("click", function() {
+  localStorage.clear();
+  location.reload();
+})
