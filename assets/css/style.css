@@ -49,12 +49,6 @@ h4 {
     padding-top: .5em;
 }
 
-.question,
-ol,
-li {
-    list-style-type: none;
-}
-
 #card-hidden {
     display: flex;
     justify-content: center;

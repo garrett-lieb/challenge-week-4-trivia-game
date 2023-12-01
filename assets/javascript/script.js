@@ -54,6 +54,8 @@ var questions =
      answer: "individual statements, instructions or function calls"},
   ];
 
+
+// start button event listener
 startButton.addEventListener("click", startGame);
 
 // timer variables
@@ -175,6 +177,11 @@ function displayScores() {
   for (var i = 0; i < highscore.length; i++) {
     var newScore = document.createElement("li");
     newScore.textContent = highscore[i].score + " " + highscore[i].newinitials;
+    // order from highest to lowest
+    highscore.sort(function(a, b) {
+      return b.score - a.score;
+    });
+    //put scores in list with numbers?
     highscoresList.appendChild(newScore);
   }
 }
@@ -204,8 +211,8 @@ playagainButton.addEventListener("click", function() {
   displayScores();
 })
 
-// clear highscores
-clearButton.addEventListener("click", function() {
-  localStorage.clear();
-  location.reload();
-})
+// // clear highscores
+// clearButton.addEventListener("click", function() {
+//   localStorage.clear();
+//   location.reload();
+// })
