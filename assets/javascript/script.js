@@ -13,9 +13,11 @@ var buttonchoices = ["#answer1", "#answer2", "#answer3", "#answer4"];
 var correct = document.querySelector("#correct");
 var incorrect = document.querySelector("#incorrect");
 
+
 var highscoresList = document.querySelector("#highscoresList");
 var highscoresCountSpan = document.querySelector("#highscoresCountSpan");
 var cardhidden = document.querySelector("#card-hidden");
+
 
 var questionIndex = 0;
 var currentscore = 0;
