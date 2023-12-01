@@ -155,6 +155,11 @@ function getInitials() {
     submitButton.addEventListener("click", function(event) {
     
     event.preventDefault();
+    // save initals to array
+    // save scores to array
+
+
+    function hideStuff() {
     $(answerContainer).css("display", "none");  
     $(cardhidden).css("display", "none");
     $(questionElement).css("display", "none");
@@ -164,40 +169,24 @@ function getInitials() {
     $(timeleft).css("display", "none");
     $(startButton).css("display", "none");
     $(playagainButton).css("display", "flex");
-    
+    };
+    hideStuff();
   })
 }
 
- // store scores in local storage
-// Initialize arrays to store scores and initials
-var scores = [];
-var initials = [];
+// get scores and initals from local storage
+function getScores() {};
 
-// Function to save scores and initials to arrays
-function saveScore(initial) {
-  scores.push(currentscore);
-  initials.push(initial);
-}
+// display scores on page
+function renderScores() {};
 
-// Function to display scores on page
-function displayScores() {
-  var scoreList = document.getElementById("score-list");
-  scoreList.innerHTML = ""; // Clear previous scores
-
-  for (var i = 0; i < scores.length; i++) {
-    var listItem = document.createElement("li");
-    listItem.textContent = initials[i] + " - " + scores[i];
-    scoreList.appendChild(listItem);
-  }
-}
-
-// Event listener for play again button
+// if play again button is clicked, reload page to start over
 playagainButton.addEventListener("click", function() {
   location.reload();
-});
+})
 
-// Event listener for clear button
+// clear highscores
 clearButton.addEventListener("click", function() {
   localStorage.clear();
   location.reload();
-});
+})
