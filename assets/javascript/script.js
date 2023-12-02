@@ -12,7 +12,7 @@ var currentscoreEl = document.querySelector("#current-score");
 var buttonchoices = ["#answer1", "#answer2", "#answer3", "#answer4"];
 var correct = document.querySelector("#correct");
 var incorrect = document.querySelector("#incorrect");
-
+var title4 = document.querySelector("#title4");
 
 var highscoresList = document.querySelector("#highscoresList");
 var highscoresCountSpan = document.querySelector("#highscoresCountSpan");
@@ -30,7 +30,7 @@ var highscores = [];
 $(cardhidden).css("display", "none");
 $(playagainButton).css("display", "none");
 $(answerContainer).css("display", "none");
-
+$(title4).css("display", "none");
 
 // array of questions & answers
 var questions =
@@ -199,6 +199,7 @@ displayScores();
     $(timeleft).css("display", "none");
     $(startButton).css("display", "none");
     $(playagainButton).css("display", "flex");
+    $(title4).css("display", "flex");
     };
     hideStuff();
   })
