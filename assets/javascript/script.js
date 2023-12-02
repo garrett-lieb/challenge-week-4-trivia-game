@@ -214,8 +214,3 @@ playagainButton.addEventListener("click", function() {
   displayScores();
 })
 
-// // clear highscores
-// clearButton.addEventListener("click", function() {
-//   localStorage.clear();
-//   location.reload();
-// })
