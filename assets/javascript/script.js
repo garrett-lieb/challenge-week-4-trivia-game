@@ -171,9 +171,8 @@ function getInitials() {
       highscore.push(newScore);
       window.localStorage.setItem('highscores', JSON.stringify(highscore));
     }
-    // get scores from locala storage and display scores on page
-// get score from local storage array and append to list
-// get initials from local storage array and append to score based on index value
+
+// parse scores from local storage and display with initials, sort from highest to lowest    
 function displayScores() {
   var highscore = JSON.parse(localStorage.getItem("highscores")) || [];
   for (var i = 0; i < highscore.length; i++) {
